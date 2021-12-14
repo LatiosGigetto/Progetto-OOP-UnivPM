@@ -15,25 +15,24 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 								+ access_token + "&fields=height,width,name&limit=500";
 	/* File local;
 
-		public void setFile(File in) {      Legacy code
+		public void setFile(File in) {      Legacy code, might reuse
 			this.local = in;
 		}
 	 */
 	
 		public JSONArray getPhotoArray() {
 			
-				File local = new File("./JSON/response.json");
-			 FileReader fileIn;
 			try {
+				File local = new File("./JSON/response.json");
 				JSONParser parser = new JSONParser();
 				Object obj = parser.parse(new FileReader(local));
 				JSONObject jsonObj = (JSONObject) obj;
 				JSONArray photos = (JSONArray) jsonObj.get("data");
 				return photos;
 			} catch (IOException | ParseException e) {
-				// TODO handle exception
 				e.printStackTrace();
+				//TODO Handle exception
 			}
-
+			return null;
 		}
 }

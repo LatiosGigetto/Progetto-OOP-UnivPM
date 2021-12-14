@@ -1,6 +1,9 @@
 package facebookproj.progettoesameUNIVPM.controller;
+
+import facebookproj.progettoesameUNIVPM.services.*;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,20 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class FacebookController {
 	
+	FacebookDataServiceImpl service = new FacebookDataServiceImpl();
+	
+/*	
 	@RequestMapping("/refresh")
 	public ResponseEntity<Object> getNewData() {     		// TODO add method to get JSON file.
 		return new ResponseEntity<>();
 		
 	}
 	
-	
-	@RequestMapping("/allPhotos")
+*/	
+	@RequestMapping("/photos")
 	public ResponseEntity<Object> getAllPhotos() {     		// TODO add method to get photos
-		return new ResponseEntity<>();
+		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);
 	}
 	
 	
-	@RequestMapping("/captionedPhotos")
+	/*
+	@RequestMapping("/photos/{filter}")
 	public ResponseEntity<Object> getCaptionedPhotos() {	// TODO add method to get photos
 		return new ResponseEntity<>();
 	}
@@ -56,7 +63,7 @@ public class FacebookController {
 		return new ResponseEntity<>();
 	}
 	
-	
+	*/
 }
 
 	
