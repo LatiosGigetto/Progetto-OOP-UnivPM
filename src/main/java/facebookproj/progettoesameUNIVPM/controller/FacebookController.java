@@ -1,3 +1,8 @@
+/*
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 package facebookproj.progettoesameUNIVPM.controller;
 
 import facebookproj.progettoesameUNIVPM.services.*;
@@ -22,7 +27,7 @@ public class FacebookController {
 	
 */	
 	@RequestMapping("/photos")
-	public ResponseEntity<Object> getAllPhotos() {     		// TODO add method to get photos
+	public ResponseEntity<Object> getAllPhotos() {     		
 		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);
 	}
 	

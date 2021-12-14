@@ -11,6 +11,11 @@ public class Facebook_Img_Caption extends Facebook_Img{
 		super(id, heigth, width);
 		this.caption = caption;
 	}
+	
+	public Facebook_Img_Caption(String id, int heigth, int width) {
+		super(id, heigth, width);
+	}
+	
 	public String getCaption() { //@return caption
 		return caption;
 	}
