@@ -7,6 +7,9 @@ package facebookproj.progettoesameUNIVPM.controller;
 
 import facebookproj.progettoesameUNIVPM.services.*;
 
+import java.io.IOException;
+
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +21,14 @@ public class FacebookController {
 	
 	FacebookDataServiceImpl service = new FacebookDataServiceImpl();
 	
-/*	
+	
 	@RequestMapping("/refresh")
-	public ResponseEntity<Object> getNewData() {     		// TODO add method to get JSON file.
-		return new ResponseEntity<>();
+	public ResponseEntity<Object> getNewData() throws IOException, ParseException {     		
+		return new ResponseEntity<>(service.getJSONfromURL(), HttpStatus.OK);
 		
 	}
 	
-*/	
+	
 	@RequestMapping("/photos")
 	public ResponseEntity<Object> getAllPhotos() {     		
 		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);

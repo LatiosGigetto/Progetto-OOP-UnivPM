@@ -5,6 +5,7 @@
  */
 package facebookproj.progettoesameUNIVPM.services;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.io.*;
@@ -19,7 +20,7 @@ import facebookproj.progettoesameUNIVPM.exceptions.*;
 
 public class FacebookDataServiceImpl implements FacebookDataService {
 	
-	private final String access_token = ""; // TODO find a way to get the access token here
+	private final String access_token = "EAAIznxOpdUYBAADeuS4WOZCb4dTJZB1hucC3SlWMgrqAUxE948uk1qhOWXyiXcmNGy1FemdBxBVYrqzZCBOn9iZASUeMowENqZAGZCrwIvVBVkDgh5VyhgUZAOeD3bsMX4FLsKJsm7BYnXZBaxtlnizj6ZBjqHHuhkFTgEOcVFhnxRSxgokz9KhMII2BJPmIvGbOMHUP0VQKoDx8xziJlFoMsGwHadt9nBPn10n2WlybDtL6bRPJPZBSZCk"; // TODO find a way to get the access token here
 	
 	private final String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" 
 								+ access_token + "&fields=height,width,name&limit=500";
@@ -33,7 +34,28 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 		}
 	 */
 	
-		public void JSONtoObject() throws FileNotFoundException, IOException, ResponseNotFound { 
+		public String getJSONfromURL() throws IOException, ParseException {				
+			try {
+				InputStream input = new URL(url).openStream();
+				JSONParser parser = new JSONParser();
+				JSONObject result = (JSONObject) parser.parse(new InputStreamReader(input));
+				File target = new File("./JSON/response.json");
+				FileWriter fileOut = new FileWriter(target);
+				fileOut.write(result.toString());
+				fileOut.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "Failed to retrieve data from URL";
+			}
+			this.JSONtoObject();
+			return "Local data refreshed successfully.";
+		}
+	
+	
+	
+	
+	
+		public void JSONtoObject() throws FileNotFoundException, IOException, ResponseNotFound, MalformedURLException { 
 			
 			try {
 				File local = new File("./JSON/response.json");
@@ -48,14 +70,12 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 					int height = ((Number) temp.get("height")).intValue();
 					int width = ((Number)temp.get("width")).intValue();
 					if (temp.get("name") == null) {
-						Facebook_Img current = new Facebook_Img(id, height, width);
-						photos.add(current);
+						photos.add(new Facebook_Img(id, height, width));
 					}
 					else {
-						Facebook_Img_Caption current = new Facebook_Img_Caption(id, height, width);
-						photos.add(current);
+						photos.add(new Facebook_Img_Caption(id, height, width, "yes"));
 					}
-				}
+				} System.out.println(photos);
 			} catch (FileNotFoundException | ParseException e ) {
 				e.printStackTrace();
 				//TODO Handle exception

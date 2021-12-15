@@ -16,9 +16,8 @@ import org.json.simple.JSONArray;
 
 public interface FacebookDataService {
 	
-	public abstract JSONArray getPhotoArray(); // throws IOException, ParseException;
-	public void JSONtoObject() throws ResponseNotFound, FileNotFoundException, IOException;
-//	public abstract JSONArray getJSONfromURL(); 
-//	public abstract void filter();
+	public abstract JSONArray getPhotoArray(); 
+	public abstract void JSONtoObject() throws ResponseNotFound, FileNotFoundException, IOException;
+	public abstract String getJSONfromURL() throws IOException, ParseException; 
 	
 }
