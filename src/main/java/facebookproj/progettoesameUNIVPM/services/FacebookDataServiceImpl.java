@@ -20,7 +20,7 @@ import facebookproj.progettoesameUNIVPM.exceptions.*;
 
 public class FacebookDataServiceImpl implements FacebookDataService {
 	
-	private final String access_token = ""; // TODO find a way to get the access token here
+	private final String access_token = "EAAIznxOpdUYBAGU2aWte5v5B4F555tinw1Og56dgJJsAuToID8LFbybtad8cHOtnxgVlli7Y4RrVuk8HZB1CSNBEnGIb3EzsujIPH5bZCrB26QHd2RL9tDGWhPAdhW5jOZBE8QHs8kVHUWZAE3ZA1U60wPbPFwcID9IW7CAw0P5KNDi74ZC2HNLjuNvQtxYRSpCgLKMuvZAHs4QKqCpJfHYm8XY7hNE6y9oQmmmB1rFgeoJUg9PCTDC"; // TODO find a way to get the access token here
 	
 	private final String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" 
 								+ access_token + "&fields=height,width,name&limit=500";
@@ -29,7 +29,7 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	 * 
 	 * @see Facebook_Obj
 	 */
-	ArrayList<Facebook_Obj> photos = new ArrayList<>();
+	ArrayList<Facebook_Img> photos = new ArrayList<>();
 	
 	/* File local;
 
@@ -124,7 +124,9 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 			
 		}
 		
-		
+		public ArrayList<Facebook_Img> getPhotos(){
+			return photos;
+		}
 		
 		
 }
