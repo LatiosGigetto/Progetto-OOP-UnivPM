@@ -6,15 +6,14 @@
  * 
  */
 package facebookproj.progettoesameUNIVPM.exceptions;
+
 import java.io.IOException;
 
-public class FilterNotFound extends IOException {
-	private static final long serialVersionUID = 1L; 
+public class FilterNotFoundException extends IOException {
 	/**
-	 * costructor
+	 * Constructor
 	 */
-	public FilterNotFound() { 
-		super();
-		System.out.println("The following filter is not available");
+	public FilterNotFoundException() {
+		super("Filter not found.");
 	}
 }

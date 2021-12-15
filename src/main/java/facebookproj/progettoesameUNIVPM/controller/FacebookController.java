@@ -5,7 +5,8 @@
  */
 package facebookproj.progettoesameUNIVPM.controller;
 
-import facebookproj.progettoesameUNIVPM.exceptions.ResponseNotFound;
+import facebookproj.progettoesameUNIVPM.exceptions.InvalidTokenException;
+import facebookproj.progettoesameUNIVPM.exceptions.ResponseNotFoundException;
 import facebookproj.progettoesameUNIVPM.filter.*;
 import facebookproj.progettoesameUNIVPM.services.*;
 
@@ -26,19 +27,21 @@ public class FacebookController {
 	FacebookDataServiceImpl service = new FacebookDataServiceImpl();
 
 	@RequestMapping("/refresh")
-	public ResponseEntity<Object> getNewData() throws IOException, ParseException {
+	public ResponseEntity<Object> getNewData() throws IOException, ParseException, InvalidTokenException {
+		service.getTokenFromFile();
 		return new ResponseEntity<>(service.getJSONfromURL(), HttpStatus.OK);
 
 	}
-
+/*
 	@RequestMapping("/photos")
 	public ResponseEntity<Object> getAllPhotos() {
-		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);   Legacy code.
 	}
-
-	@RequestMapping("/filter")
+*/
+	
+	@RequestMapping("/photos")
 	public ResponseEntity<Object> getCaptionedPhotos(
-			@RequestParam(name = "filter", defaultValue = "none") String filter) throws FileNotFoundException, ResponseNotFound, MalformedURLException, IOException {
+			@RequestParam(name = "filter", defaultValue = "none") String filter) throws FileNotFoundException, ResponseNotFoundException, MalformedURLException, IOException {
 		service.JSONtoObject();
 		switch (filter) {
 		case "horizontal":

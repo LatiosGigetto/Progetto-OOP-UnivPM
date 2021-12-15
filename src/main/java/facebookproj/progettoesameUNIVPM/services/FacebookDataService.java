@@ -7,7 +7,7 @@ package facebookproj.progettoesameUNIVPM.services;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
-import facebookproj.progettoesameUNIVPM.exceptions.ResponseNotFound;
+import facebookproj.progettoesameUNIVPM.exceptions.ResponseNotFoundException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,7 +17,7 @@ import org.json.simple.JSONArray;
 public interface FacebookDataService {
 	
 	public abstract JSONArray getPhotoArray(); 
-	public abstract void JSONtoObject() throws ResponseNotFound, FileNotFoundException, IOException;
+	public abstract void JSONtoObject() throws ResponseNotFoundException, FileNotFoundException, IOException;
 	public abstract String getJSONfromURL() throws IOException, ParseException; 
 	
 }
