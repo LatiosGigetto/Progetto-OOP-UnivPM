@@ -1,4 +1,4 @@
-/*
+/**
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 
@@ -6,26 +6,45 @@
 package facebookproj.progettoesameUNIVPM.model;
 
 public class Facebook_Img extends Facebook_Obj {
-	private int height;
-	private int width;
-	public Facebook_Img(String id, int heigth, int width) {
+	private int height; //pixel
+	private int width; //pixel
+	public Facebook_Img(String id, int heigth, int width) { //costructor
 		super(id);
 		this.height = heigth;
 		this.width = width;
 	}
-	public int getHeight() { //@return Heigth
+	/**
+	 * this method return the param Height
+	 * @return height
+	 */
+	public int getHeight() { 
 		return height;
 	}
-	public void setHeight(int height) { //set the @param
+	/**
+	 * this method set the param Height
+	 * @param height
+	 */
+	public void setHeight(int height) { 
 		this.height = height;
 	}
-	public int getWidth() { //@return Width
+	/**
+	 * this method return the param width
+	 * @return width
+	 */
+	public int getWidth() { 
 		return width;
 	}
-	public void setWidth(int width) { //set the @param
+	/**
+	 * this method set the param width
+	 * @param width
+	 */
+	public void setWidth(int width) { 
 		this.width = width;
 	}
-	public String toString() { //@return a String
+	/**
+	 * this method gives back a string
+	 */
+	public String toString() { 
 		return "Facebook_Obj: id=" + getId() + ", is=  " + getHeight() + "x" + getWidth() ;
 	}
 	
