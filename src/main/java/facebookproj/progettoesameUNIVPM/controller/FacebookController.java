@@ -1,4 +1,4 @@
-/*
+/**
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 

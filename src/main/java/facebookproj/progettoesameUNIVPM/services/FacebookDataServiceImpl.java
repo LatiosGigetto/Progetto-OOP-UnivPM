@@ -1,4 +1,4 @@
-/*
+/**
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 
@@ -20,11 +20,15 @@ import facebookproj.progettoesameUNIVPM.exceptions.*;
 
 public class FacebookDataServiceImpl implements FacebookDataService {
 	
-	private final String access_token = "EAAIznxOpdUYBAADeuS4WOZCb4dTJZB1hucC3SlWMgrqAUxE948uk1qhOWXyiXcmNGy1FemdBxBVYrqzZCBOn9iZASUeMowENqZAGZCrwIvVBVkDgh5VyhgUZAOeD3bsMX4FLsKJsm7BYnXZBaxtlnizj6ZBjqHHuhkFTgEOcVFhnxRSxgokz9KhMII2BJPmIvGbOMHUP0VQKoDx8xziJlFoMsGwHadt9nBPn10n2WlybDtL6bRPJPZBSZCk"; // TODO find a way to get the access token here
+	private final String access_token = ""; // TODO find a way to get the access token here
 	
 	private final String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" 
 								+ access_token + "&fields=height,width,name&limit=500";
-	
+	/**
+	 * Used to store the contents of response.json as Facebook_Obj.
+	 * 
+	 * @see Facebook_Obj
+	 */
 	ArrayList<Facebook_Obj> photos = new ArrayList<>();
 	
 	/* File local;
@@ -32,6 +36,15 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 		public void setFile(File in) {      Legacy code, might reuse
 			this.local = in;
 		}
+	 */
+	
+	/**
+	 * Gets the latest metadata available through an API Call and writes it to response.json.
+	 * @see String access_token
+	 * @see String url
+	 * @see getJSONFromURL
+	 * 
+	 * @return if the refresh was succesful or not.
 	 */
 	
 		public String getJSONfromURL() throws IOException, ParseException {				
@@ -51,7 +64,11 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 			return "Local data refreshed successfully.";
 		}
 	
-	
+	/**
+	 * Stores data from response.json to the ArrayList photos.
+	 * 
+	 * @see ArrayList photos
+	 */
 	
 	
 	
@@ -82,6 +99,13 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 			}
 			
 		}	
+		
+		/**
+		 * Gets the locally saved response.json.
+		 * 
+		 * @return the JSONArray to be used by the Controller
+		 */
+		
 		
 		public JSONArray getPhotoArray()  {
 			
