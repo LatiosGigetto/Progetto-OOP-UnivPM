@@ -10,12 +10,10 @@ import org.json.simple.JSONArray;
 import facebookproj.progettoesameUNIVPM.model.*;
 
 public abstract class Filter {
-	/**
-	 * @param collection of photo
-	 */
+	
 	protected ArrayList<Facebook_Img> photos = new ArrayList<>();
 	/**
-	 * costuctor
+	 * Constructior.
 	 * @param photos
 	 */
 	public Filter(ArrayList<Facebook_Img> photos) {

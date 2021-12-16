@@ -16,7 +16,7 @@ public class Filter_Dimension extends Filter {
 		super(photos);
 	}
 	/**
-	 * this method filter the photosarray by dimension
+	 * Filters the photos array by dimension.
 	 */
 	@Override
 	public JSONArray getFilter(String dimension) {

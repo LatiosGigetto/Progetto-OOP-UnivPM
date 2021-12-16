@@ -6,12 +6,9 @@
 package facebookproj.progettoesameUNIVPM.model;
 
 public class Facebook_Img_Caption extends Facebook_Img{
-    /**
-     * @param caption
-     */
     private String caption;
     /**
-     * costructor
+     * Constructor-
      * @param id
      * @param heigth
      * @param width
@@ -22,7 +19,7 @@ public class Facebook_Img_Caption extends Facebook_Img{
         this.caption = caption;
     }
     /**
-     * costructor
+     * Constructor without the caption.
      * @param id
      * @param heigth
      * @param width
@@ -31,21 +28,20 @@ public class Facebook_Img_Caption extends Facebook_Img{
         super(id, heigth, width);
     }
     /**
-     * this method return the caption
-     * @return caption
+     * @return the caption of the photo.
      */
     public String getCaption() { 
         return caption;
     }
     /**
-     * this method set the param caption
+     * Sets the param caption.
      * @param caption
      */
     public void setCaption(String caption) { 
         this.caption = caption;
     }
     /**
-     * this method gives back a string
+     * @return a String representation of the captioned photo.
      */
     public String toString() { 
         return "Facebook_Obj: id=" + getId() + ", is=  " + getHeight() + "x" + getWidth() + "and It has a caption= " + getCaption();

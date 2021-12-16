@@ -5,10 +5,12 @@
  */
 package facebookproj.progettoesameUNIVPM.controller;
 
+import facebookproj.progettoesameUNIVPM.exceptions.FilterNotFoundException;
 import facebookproj.progettoesameUNIVPM.exceptions.InvalidTokenException;
 import facebookproj.progettoesameUNIVPM.exceptions.ResponseNotFoundException;
 import facebookproj.progettoesameUNIVPM.filter.*;
 import facebookproj.progettoesameUNIVPM.services.*;
+import facebookproj.progettoesameUNIVPM.statistics.Statistics;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,12 +26,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class FacebookController {
 	/**
-	 * instance of class FacebookServiceImpl
-	 * it's used to call the main methods
+	 * Instance of class FacebookServiceImpl Used to call the main methods
 	 */
 	FacebookDataServiceImpl service = new FacebookDataServiceImpl();
+
 	/**
-	 * this route has to maintain the JSON updated
+	 * Constructor. Used to call the JSONtoObject method on launch.
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws ResponseNotFoundException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+
+	public FacebookController()
+			throws FileNotFoundException, ResponseNotFoundException, MalformedURLException, IOException {
+		service.JSONtoObject();
+	}
+
+	/**
+	 * This route mantains the JSON updated
+	 * 
 	 * @return service.getJSONfromURL()
 	 * @throws IOException
 	 * @throws ParseException
@@ -41,24 +58,27 @@ public class FacebookController {
 		return new ResponseEntity<>(service.getJSONfromURL(), HttpStatus.OK);
 
 	}
-/*
-	@RequestMapping("/photos")
-	public ResponseEntity<Object> getAllPhotos() {
-		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);   Legacy code.
-	}
-*/
+
+	/*
+	 * @RequestMapping("/photos") public ResponseEntity<Object> getAllPhotos() {
+	 * return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK); Legacy
+	 * code. }
+	 */
 	/**
-	 * this route has to return the photosarray filtered under client request
+	 * Return the photos array filtered under client request
+	 * 
 	 * @param filter
 	 * @return filtered photos
 	 * @throws FileNotFoundException
 	 * @throws ResponseNotFoundException
 	 * @throws MalformedURLException
 	 * @throws IOException
+	 * @throws FilterNotFoundException
 	 */
 	@RequestMapping("/photos")
 	public ResponseEntity<Object> getCaptionedPhotos(
-			@RequestParam(name = "filter", defaultValue = "none") String filter) throws FileNotFoundException, ResponseNotFoundException, MalformedURLException, IOException {
+			@RequestParam(name = "filter", defaultValue = "none") String filter)
+			throws FileNotFoundException, ResponseNotFoundException, MalformedURLException, IOException {
 		service.JSONtoObject();
 		switch (filter) {
 		case "horizontal":
@@ -72,19 +92,27 @@ public class FacebookController {
 		case "large":
 			return new ResponseEntity<>(new Filter_Dimension(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "captioned":
-			//System.out.println("case " + filter);
+			// System.out.println("case " + filter);
 			return new ResponseEntity<>(new Filter_Caption(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "uncaptioned":
-			//System.out.println("case " + filter);
+			// System.out.println("case " + filter);
 			return new ResponseEntity<>(new Filter_Caption(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "none":
-			return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);
+			return new ResponseEntity<>(service.getPhotosNoCaption(), HttpStatus.OK);
+		default: 
+			throw new FilterNotFoundException();
 		}
-		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);
 	}
 
-	/*
-	 * @RequestMapping("/stats") public ResponseEntity<Object> getStats() { // TODO
-	 * add method to get statistics return new ResponseEntity<>(); }
+	/**
+	 * Used to get statistics about the current photos array
+	 * 
+	 * @return a string with the stats
 	 */
+
+	@RequestMapping("/stats")
+	public ResponseEntity<Object> getStats() {
+		return new ResponseEntity<>(new Statistics(service.getPhotos()).toString(), HttpStatus.OK);
+	}
+
 }

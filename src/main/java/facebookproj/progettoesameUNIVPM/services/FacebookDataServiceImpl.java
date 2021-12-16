@@ -22,8 +22,10 @@ import facebookproj.progettoesameUNIVPM.exceptions.*;
 public class FacebookDataServiceImpl implements FacebookDataService {
 
 	private String access_token = "";
-	private String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token="
-			+ access_token + "&fields=height,width,name&limit=500";
+	private String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" + access_token
+			+ "&fields=height,width,name&limit=500";
+	private File response = new File("./resources/response.json");
+
 	/**
 	 * Used to store the contents of response.json as Facebook-_Obj.
 	 * 
@@ -50,8 +52,8 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 			throw new InvalidTokenException();
 		}
 		this.access_token = tmp.substring(6);
-		this.url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token="
-				+ access_token + "&fields=height,width,name&limit=500";
+		this.url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" + access_token
+				+ "&fields=height,width,name&limit=500";
 		scanner.close();
 	}
 
@@ -61,18 +63,16 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	 * 
 	 * @see String access_token
 	 * @see String url
-	 * @see getJSONFromURL
 	 * 
 	 * @return if the refresh was succesful or not.
 	 */
 
-	public String getJSONfromURL() throws IOException, ParseException {
+	public String getJSONfromURL() throws IOException {
 		try {
 			InputStream input = new URL(url).openStream();
 			JSONParser parser = new JSONParser();
 			JSONObject result = (JSONObject) parser.parse(new InputStreamReader(input));
-			File target = new File("./resources/response.json");
-			FileWriter fileOut = new FileWriter(target);
+			FileWriter fileOut = new FileWriter(response);
 			fileOut.write(result.toString());
 			fileOut.close();
 		} catch (Exception e) {
@@ -89,15 +89,14 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	 * @see ArrayList photos
 	 */
 
-	public void JSONtoObject()
-			throws FileNotFoundException, IOException, ResponseNotFoundException, MalformedURLException {
+	public void JSONtoObject() throws IOException {
 
 		try {
-			File local = new File("./resources/response.json");
 			JSONParser parser = new JSONParser();
-			Object obj = parser.parse(new FileReader(local));
+			Object obj = parser.parse(new FileReader(response));
 			JSONObject jsonObj = (JSONObject) obj;
 			JSONArray jsonArr = (JSONArray) jsonObj.get("data");
+			photos.clear();
 
 			for (int i = 0; i < jsonArr.size(); i++) {
 				JSONObject temp = (JSONObject) jsonArr.get(i);
@@ -110,10 +109,9 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 					photos.add(new Facebook_Img_Caption(id, height, width, "yes"));
 				}
 			}
-			System.out.println(photos);
+			// System.out.println(photos); Legacy code. Used for quick debug.
 		} catch (FileNotFoundException | ParseException e) {
-			e.printStackTrace();
-			// TODO Handle exception
+			throw new ResponseNotFoundException();
 		}
 
 	}
@@ -121,15 +119,15 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	/**
 	 * Gets the locally saved response.json.
 	 * 
+	 * @deprecated for privacy reasons.
 	 * @return the JSONArray to be used by the Controller
 	 */
 
 	public JSONArray getPhotoArray() {
 
 		try {
-			File local = new File("./resources/response.json");
 			JSONParser parser = new JSONParser();
-			Object obj = parser.parse(new FileReader(local));
+			Object obj = parser.parse(new FileReader(response));
 			JSONObject jsonObj = (JSONObject) obj;
 			JSONArray photos = (JSONArray) jsonObj.get("data");
 			return photos;
@@ -139,6 +137,18 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 		}
 		return null; // Should never get here. If it does, there MUST be some problems.
 
+	}
+
+	/**
+	 * Turns the photos array into a JSONArray and returns it.
+	 * 
+	 * @return the photos array as a JSONArray.
+	 */
+
+	public JSONArray getPhotosNoCaption() {
+		JSONArray result = new JSONArray();
+		result.addAll(photos);
+		return result;
 	}
 
 	/**

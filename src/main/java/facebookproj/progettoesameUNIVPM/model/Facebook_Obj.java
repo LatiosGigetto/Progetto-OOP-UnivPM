@@ -6,33 +6,29 @@
 package facebookproj.progettoesameUNIVPM.model;
 
 public class Facebook_Obj {
-    /**
-     * @param basic param for identification
-     */
     private String id; 
     /**
-     * costructor
+     * Constructor.
      * @param id
      */
     public Facebook_Obj(String id) { 
         this.id = id;
     }
     /**
-     * this method return the id
-     * @return id
+     * 
+     * @return returns the object's ID.
      */
     public String getId() { 
         return id;
     }
     /**
-     * this method set the param id
-     * @param id
+     * Sets the param ID
      */
     public void setId(String id) { 
         this.id = id;
     }
     /**
-     * this method gives back a string 
+     * @return a String representation of the object.
      */
     public String toString() { 
         return "Facebook_Obj: id=" + id;

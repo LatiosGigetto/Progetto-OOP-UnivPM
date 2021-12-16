@@ -14,7 +14,7 @@ public class Filter_Orientation extends Filter {
 		super(photos);
 	}
 	/**
-	 * this method filter the photoarray by orientation
+	 * Filters the photos array by orientation.
 	 */
 	@Override
 	public JSONArray getFilter(String orientation) {

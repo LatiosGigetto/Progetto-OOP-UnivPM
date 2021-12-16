@@ -18,8 +18,7 @@ public class Filter_Caption extends Filter {
 	}
 
 	/**
-	 * this method check if the class Facebook_Obj is an instance of
-	 * Facebook_Img_Caption
+	 * Checks if the class Facebook_Obj is an instance of Facebook_Img_Caption.
 	 */
 	@Override
 	public JSONArray getFilter(String status) {
@@ -34,7 +33,7 @@ public class Filter_Caption extends Filter {
 			break;
 		case "uncaptioned":
 			for (Facebook_Img o : photos) {
-				if (o instanceof Facebook_Img) {
+				if (!(o instanceof Facebook_Img_Caption)) {
 					filtered.add(o);
 				}
 			}
