@@ -13,7 +13,9 @@ public class Filter_Orientation extends Filter {
 	public Filter_Orientation(ArrayList<Facebook_Img> photos) {
 		super(photos);
 	}
-
+	/**
+	 * this method filter the photoarray by orientation
+	 */
 	@Override
 	public JSONArray getFilter(String orientation) {
 		ArrayList<Facebook_Img> filtered = new ArrayList<>();

@@ -25,7 +25,7 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	private String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token="
 			+ access_token + "&fields=height,width,name&limit=500";
 	/**
-	 * Used to store the contents of response.json as Facebook_Obj.
+	 * Used to store the contents of response.json as Facebook-_Obj.
 	 * 
 	 * @see Facebook_Obj
 	 */

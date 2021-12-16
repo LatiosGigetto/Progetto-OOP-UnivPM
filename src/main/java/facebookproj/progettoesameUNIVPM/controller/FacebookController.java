@@ -23,9 +23,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class FacebookController {
-
+	/**
+	 * instance of class FacebookServiceImpl
+	 * it's used to call the main methods
+	 */
 	FacebookDataServiceImpl service = new FacebookDataServiceImpl();
-
+	/**
+	 * this route has to maintain the JSON updated
+	 * @return service.getJSONfromURL()
+	 * @throws IOException
+	 * @throws ParseException
+	 * @throws InvalidTokenException
+	 */
 	@RequestMapping("/refresh")
 	public ResponseEntity<Object> getNewData() throws IOException, ParseException, InvalidTokenException {
 		service.getTokenFromFile();
@@ -38,7 +47,15 @@ public class FacebookController {
 		return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);   Legacy code.
 	}
 */
-	
+	/**
+	 * this route has to return the photosarray filtered under client request
+	 * @param filter
+	 * @return filtered photos
+	 * @throws FileNotFoundException
+	 * @throws ResponseNotFoundException
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
 	@RequestMapping("/photos")
 	public ResponseEntity<Object> getCaptionedPhotos(
 			@RequestParam(name = "filter", defaultValue = "none") String filter) throws FileNotFoundException, ResponseNotFoundException, MalformedURLException, IOException {
@@ -55,10 +72,10 @@ public class FacebookController {
 		case "large":
 			return new ResponseEntity<>(new Filter_Dimension(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "captioned":
-			System.out.println("case " + filter);
+			//System.out.println("case " + filter);
 			return new ResponseEntity<>(new Filter_Caption(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "uncaptioned":
-			System.out.println("case " + filter);
+			//System.out.println("case " + filter);
 			return new ResponseEntity<>(new Filter_Caption(service.getPhotos()).getFilter(filter), HttpStatus.OK);
 		case "none":
 			return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK);

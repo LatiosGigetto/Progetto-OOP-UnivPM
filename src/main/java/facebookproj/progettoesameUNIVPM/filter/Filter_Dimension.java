@@ -15,7 +15,9 @@ public class Filter_Dimension extends Filter {
 	public Filter_Dimension(ArrayList<Facebook_Img> photos) {
 		super(photos);
 	}
-
+	/**
+	 * this method filter the photosarray by dimension
+	 */
 	@Override
 	public JSONArray getFilter(String dimension) {
 		ArrayList<Facebook_Img> filtered = new ArrayList<>();
