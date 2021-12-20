@@ -1,4 +1,8 @@
 /**
+ * The methods in this class each give a different statistic.
+ * 
+ * @see Filter
+ * 
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  */
@@ -10,14 +14,19 @@ import facebookproj.progettoesameUNIVPM.model.*;
 import facebookproj.progettoesameUNIVPM.filter.*;
 
 /**
- * The methods in this class each give a different statistic.
- * 
- * @see Filter
+ *
  */
 
 public class Statistics {
 	
 	private ArrayList<Facebook_Img> photos = new ArrayList<>();
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @param photos
+	 */
+	
 	
 	public Statistics(ArrayList<Facebook_Img> photos) {
 		this.photos = photos;

@@ -1,4 +1,6 @@
 /**
+ * Implements the FacebookDataService interface.
+ * Used by the Controller to call the main methods used by the program.
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 
@@ -27,14 +29,14 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	private File response = new File("./resources/response.json");
 
 	/**
-	 * Used to store the contents of response.json as Facebook-_Obj.
+	 * Used to store the contents of response.json as Facebook_Obj.
 	 * 
 	 * @see Facebook_Obj
 	 */
 	ArrayList<Facebook_Img> photos = new ArrayList<>();
 
 	/**
-	 * Gets the access token from the config.txt
+	 * Gets the access token from the config.txt file.
 	 * 
 	 * 
 	 * @throws FileNotFoundException
