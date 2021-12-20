@@ -1,4 +1,6 @@
 /**
+ * this determs the routes
+ * and calls the services
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 
@@ -45,7 +47,7 @@ public class FacebookController {
 	}
 
 	/**
-	 * This route mantains the JSON updated
+	 * This route maintains the JSON updated
 	 * 
 	 * @return service.getJSONfromURL()
 	 * @throws IOException
@@ -61,8 +63,8 @@ public class FacebookController {
 
 	/*
 	 * @RequestMapping("/photos") public ResponseEntity<Object> getAllPhotos() {
-	 * return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK); Legacy
-	 * code. }
+	 * return new ResponseEntity<>(service.getPhotoArray(), HttpStatus.OK); Legacy code. 
+	 * }
 	 */
 	/**
 	 * Return the photos array filtered under client request
