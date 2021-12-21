@@ -2,8 +2,8 @@ package facebookproj.progettoesameUNIVPM.exceptions;
 
 import java.io.IOException;
 /**
- * this class is an exception that it's called
- * when the user try to use a filter that doesn't exist
+ * Exception that it's called
+ * when the user tries to use a filter that doesn't exist
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 

@@ -12,7 +12,7 @@ public abstract class Filter {
 	
 	protected ArrayList<Facebook_Img> photos = new ArrayList<>();
 	/**
-	 * Constructior.
+	 * Constructor.
 	 * @param photos
 	 */
 	public Filter(ArrayList<Facebook_Img> photos) {

@@ -1,9 +1,10 @@
+package facebookproj.progettoesameUNIVPM.model;
+
 /**
  * @author Francesco R. Parisi
  * @author Alessandro Rossini
  * 
  */
-package facebookproj.progettoesameUNIVPM.model;
 
 public class Facebook_Img extends Facebook_Obj {
     

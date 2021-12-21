@@ -1,13 +1,3 @@
-/**
- * Is implemented by FacebookDataServiceImpl.
- * 
- * @see FacebookDataServerImpl
- *
- * 
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- * 
- */
 package facebookproj.progettoesameUNIVPM.services;
 
 import org.json.simple.JSONObject;
@@ -22,6 +12,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
+
+/**
+ * Is implemented by FacebookDataServiceImpl.
+ * 
+ * 
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 
 public interface FacebookDataService {
 

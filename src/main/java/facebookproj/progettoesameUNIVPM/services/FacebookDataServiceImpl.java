@@ -1,10 +1,3 @@
-/**
- * Implements the FacebookDataService interface.
- * Used by the Controller to call the main methods used by the program.
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- * 
- */
 package facebookproj.progettoesameUNIVPM.services;
 
 import java.net.MalformedURLException;
@@ -20,6 +13,14 @@ import facebookproj.progettoesameUNIVPM.model.Facebook_Obj;
 import facebookproj.progettoesameUNIVPM.model.Facebook_Img;
 import facebookproj.progettoesameUNIVPM.model.Facebook_Img_Caption;
 import facebookproj.progettoesameUNIVPM.exceptions.*;
+
+/**
+ * Implements the FacebookDataService interface.
+ * Used by the Controller to call the main methods used by the program.
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 
 public class FacebookDataServiceImpl implements FacebookDataService {
 

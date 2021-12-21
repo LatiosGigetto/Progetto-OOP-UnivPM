@@ -1,12 +1,3 @@
-/**
- * The methods in this class each give a different statistic.
- * 
- * @see Filter
- * 
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- */
-
 package facebookproj.progettoesameUNIVPM.statistics;
 
 import java.util.ArrayList;
@@ -14,7 +5,12 @@ import facebookproj.progettoesameUNIVPM.model.*;
 import facebookproj.progettoesameUNIVPM.filter.*;
 
 /**
- *
+ * The methods in this class each give a different statistic.
+ * 
+ * @see Filter
+ * 
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
  */
 
 public class Statistics {
