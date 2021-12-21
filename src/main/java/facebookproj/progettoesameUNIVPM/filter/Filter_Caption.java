@@ -1,16 +1,14 @@
-/**
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- * 
- */
 package facebookproj.progettoesameUNIVPM.filter;
 
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import facebookproj.progettoesameUNIVPM.model.Facebook_Img;
 import facebookproj.progettoesameUNIVPM.model.Facebook_Img_Caption;
-import facebookproj.progettoesameUNIVPM.model.Facebook_Obj;
-
+/**
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 public class Filter_Caption extends Filter {
 
 	public Filter_Caption(ArrayList<Facebook_Img> photos) {

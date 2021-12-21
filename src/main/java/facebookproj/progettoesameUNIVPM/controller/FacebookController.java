@@ -1,10 +1,3 @@
-/**
- * this determs the routes
- * and calls the services
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- * 
- */
 package facebookproj.progettoesameUNIVPM.controller;
 
 import facebookproj.progettoesameUNIVPM.exceptions.FilterNotFoundException;
@@ -24,7 +17,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+/**
+ * this determs the routes
+ * and calls the services
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 @RestController
 public class FacebookController {
 	/**

@@ -1,14 +1,13 @@
-/**
- * @author Francesco R. Parisi
- * @author Alessandro Rossini
- * 
- */
 package facebookproj.progettoesameUNIVPM.filter;
 
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import facebookproj.progettoesameUNIVPM.model.Facebook_Img;
-
+/**
+ * @author Francesco R. Parisi
+ * @author Alessandro Rossini
+ * 
+ */
 public class Filter_Orientation extends Filter {
 	public Filter_Orientation(ArrayList<Facebook_Img> photos) {
 		super(photos);

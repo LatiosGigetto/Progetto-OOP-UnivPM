@@ -1,3 +1,4 @@
+package facebookproj.progettoesameUNIVPM.exceptions;
 /**
  * this class is an exception that it's called
  * when the token used is invalid
@@ -5,8 +6,6 @@
  * @author Alessandro Rossini
  * 
  */
-package facebookproj.progettoesameUNIVPM.exceptions;
-
 public class InvalidTokenException extends Exception {
 	/**
 	 * Constructor
