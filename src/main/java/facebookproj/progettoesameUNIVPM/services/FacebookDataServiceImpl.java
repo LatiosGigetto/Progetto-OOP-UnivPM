@@ -27,7 +27,7 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	private String url = "https://graph.facebook.com/3092662700971535/photos/uploaded?access_token=" + access_token
 			+ "&fields=height,width,name&limit=500";
 	private File response = new File("./resources/response.json");
-
+	private File config = new File("config.txt");
 	/**
 	 * Used to store the contents of response.json as Facebook_Obj.
 	 * 
@@ -44,8 +44,7 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 	 */
 
 	public void getTokenFromFile() throws FileNotFoundException, InvalidTokenException {
-		File token = new File("config.txt");
-		Scanner scanner = new Scanner(token);
+		Scanner scanner = new Scanner(config);
 		String tmp = "";
 		if (scanner.hasNextLine()) {
 			tmp = scanner.nextLine();
@@ -164,4 +163,33 @@ public class FacebookDataServiceImpl implements FacebookDataService {
 		return photos;
 	}
 
+	public String getAccess_token() {
+		return access_token;
+	}
+
+	public void setAccess_token(String access_token) {
+		this.access_token = access_token;
+	}
+
+	public File getResponse() {
+		return response;
+	}
+
+	public void setResponse(File response) {
+		this.response = response;
+	}
+
+	public void setPhotos(ArrayList<Facebook_Img> photos) {
+		this.photos = photos;
+	}
+
+	public File getConfig() {
+		return config;
+	}
+
+	public void setConfig(File token) {
+		this.config = token;
+	}
+
+	
 }

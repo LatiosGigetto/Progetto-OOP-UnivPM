@@ -18,21 +18,19 @@ import facebookproj.progettoesameUNIVPM.filter.*;
  */
 
 public class Statistics {
-	
+
 	private ArrayList<Facebook_Img> photos = new ArrayList<>();
-	
+
 	/**
 	 * Constructor.
 	 * 
 	 * @param photos
 	 */
-	
-	
+
 	public Statistics(ArrayList<Facebook_Img> photos) {
 		this.photos = photos;
 	}
 
-	
 	public int getAllPhotos() {
 		return photos.size();
 	}
@@ -64,7 +62,7 @@ public class Statistics {
 		}
 		return i / photos.size();
 	}
-	
+
 	public int getAverageWidth() {
 		int i = 0;
 		for (Facebook_Img o : photos) {
@@ -72,23 +70,21 @@ public class Statistics {
 		}
 		return i / photos.size();
 	}
+	
 
 	/**
 	 * Calls all other methods and combines them into a String.
 	 * 
 	 * @return the full string of statistics.
 	 */
-	
-	public String toString () {
-		return "Statistics for current photos:\n"
-				+ "Total number of photos: " + this.getAllPhotos() + "\n"
-				+ "Captioned photos: " + this.getCaptionedPhotos() + "\n"
-				+ "Uncaptioned photos: " + this.getUncaptionedPhotos() + "\n"
-				+ "Horizontal photos: " + this.getHorizontalPhotos() + "\n"
-				+ "Vertical photos: " + this.getVerticalPhotos() + "\n"
-				+ "Square photos: " + this.getSquarePhotos() + "\n"
-				+ "Average height in pixels: " + this.getAverageHeight() + "\n"
-				+ "Average width in pixels: " + this.getAverageWidth();
+
+	public String toString() {
+		return "Statistics for current photos:\n" + "Total number of photos: " + this.getAllPhotos() + "\n"
+				+ "Captioned photos: " + this.getCaptionedPhotos() + "\n" + "Uncaptioned photos: "
+				+ this.getUncaptionedPhotos() + "\n" + "Horizontal photos: " + this.getHorizontalPhotos() + "\n"
+				+ "Vertical photos: " + this.getVerticalPhotos() + "\n" + "Square photos: " + this.getSquarePhotos()
+				+ "\n" + "Average height in pixels: " + this.getAverageHeight() + "\n" + "Average width in pixels: "
+				+ this.getAverageWidth();
 	}
 
 }

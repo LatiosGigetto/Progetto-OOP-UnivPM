@@ -13,6 +13,7 @@ public class Filter_Orientation extends Filter {
 	public Filter_Orientation(ArrayList<Facebook_Img> photos) {
 		super(photos);
 	}
+
 	/**
 	 * Filters the photos array by orientation.
 	 */
