@@ -7,6 +7,8 @@ dimensions in pixels, orientation and presence of some caption using an ArrayLis
 # How to Use and Available Routes
 
 After the repository has been cloned, the application can be run in Eclipse as a Spring Boot Application.
+NOTE: The application requires a "config.txt" file in the root folder that contains the token of the user to work properly.
+Due to Facebook's policies, this token can't be provided via GitHub.
 
 The program is now ready to listen for inputs at http://localhost:8080
 
@@ -70,7 +72,7 @@ This application has been developed in Java using:
 - Maven (Project and dependencies manager)
 - Postman (API testing)
 
-Most of application's code has been written together by the two authors.
+Most of the application's code has been written together by the two authors.
 
 - Alessandro Rossini
 - Francesco Romeo Parisi
